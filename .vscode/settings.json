@@ -50,5 +50,6 @@
     "variant": "cpp",
     "vector": "cpp",
     "algorithm": "cpp"
-  }
+  },
+  "cmake.sourceDirectory": "/Users/jeff547/OpenGL/dependencies/include/glm"
 }

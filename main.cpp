@@ -98,7 +98,7 @@ int main()
   glm::vec3 cubePositions[] = {
       glm::vec3(0.0f, 0.0f, 0.0f),
       glm::vec3(2.0f, -1.0f, -1.0f),
-      glm::vec3(-4.0f, 1.0f, -1.5f),
+      glm::vec3(-1.0f, 1.0f, -1.5f),
   };
 
   // VAO and VBO
@@ -200,7 +200,7 @@ int main()
     // apply 3D perspective
     glm::mat4 view = glm::mat4(1.0f);
     glm::mat4 projection = glm::mat4(1.0f);
-    view = glm::translate(view, glm::vec3(0.0f, 0.0f, -8.0f));
+    view = glm::translate(view, glm::vec3(0.0f, 0.0f, -12.0f));
     projection = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
     // pass to shader
     shader.setMat4("view", view);
@@ -213,16 +213,26 @@ int main()
       model = glm::translate(model, cubePositions[i]);
       if (i == 0)
       {
-        model = glm::rotate(model, 1.2f * timeValue, glm::vec3(0.2f, 0.6f, 0.1f));
+        model = glm::rotate(model, 0.8f * timeValue, glm::vec3(0.2f, 0.6f, 0.1f));
         shader.setFloat("mixValue", 0.0f);
       }
-      else
+      if (i == 1)
       {
-        model = glm::translate(model, glm::vec3(1.0f, 0.0f, 0.0f));
-        model = glm::rotate(model, -1 * timeValue + glm::radians(45.0f), glm::vec3(1.0f, 0.3f, 0.5f));
+        model = glm::rotate(model, timeValue, glm::vec3(0.3f, 0.5f, 0.1f));
+        model = glm::translate(model, glm::vec3(-4.5f, 2.5f, -0.3f));
         model = glm::scale(model, glm::vec3(0.7f));
+        model = glm::rotate(model, 1.5f * timeValue, glm::vec3(0.2f, 0.6f, 0.1f));
         shader.setFloat("mixValue", 1.0f);
       }
+      if (i == 2)
+      {
+        model = glm::rotate(model, timeValue, glm::vec3(0.6f, 1.0f, -0.2f));
+        model = glm::translate(model, glm::vec3(4.0f, -2.5f, 0.4f));
+        model = glm::scale(model, glm::vec3(0.7f));
+        model = glm::rotate(model, 1.9f * timeValue, glm::vec3(0.2f, 0.6f, 0.1f));
+        shader.setFloat("mixValue", 1.0f);
+      }
+
       shader.setMat4("model", model);
 
       glDrawArrays(GL_TRIANGLES, 0, 36);
