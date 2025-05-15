@@ -15,7 +15,6 @@ class Shader
 public:
     // program id
     unsigned int ID;
-
     Shader(const char *vertexPath, const char *fragmentPath)
     {
         // 1. retrieve source code from files
@@ -122,6 +121,14 @@ public:
     void setMat4(const std::string &name, const glm::mat4 &mat)
     {
         glUniformMatrix4fv(glGetUniformLocation(ID, name.c_str()), 1, GL_FALSE, glm::value_ptr(mat));
+    }
+    void setVec2(const std::string &name, const glm::vec2 &vec)
+    {
+        glUniform2fv(glGetUniformLocation(ID, name.c_str()), 1, glm::value_ptr(vec));
+    }
+    void setVec3(const std::string &name, const glm::vec3 &vec)
+    {
+        glUniform3fv(glGetUniformLocation(ID, name.c_str()), 1, glm::value_ptr(vec));
     }
 };
 

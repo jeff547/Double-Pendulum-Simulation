@@ -7,19 +7,19 @@
 #include <glm/gtc/type_ptr.hpp>
 #include "stb_image.h"
 #include <iostream>
+#include "ball.h"
+#include "lab.h"
 using namespace std;
 
 void framebuffer_size_callbacK(GLFWwindow *window, int width, int height);
-void processInput(GLFWwindow *window);
+void processInput(GLFWwindow *window, Lab &lab);
 
-float mixValue{0.0f};
-const unsigned int SCR_WIDTH = 800;
-const unsigned int SCR_HEIGHT = 600;
+const unsigned int SCR_WIDTH = 1000;
+const unsigned int SCR_HEIGHT = 1000;
 
 int main()
 {
   // glfw: initalize and configure
-  // -----------------------------
   glfwInit();
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -27,7 +27,7 @@ int main()
   glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
   // glfw: window creation
-  GLFWwindow *window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "LearnOpenGL", NULL, NULL);
+  GLFWwindow *window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "OpenGL", NULL, NULL);
   if (window == NULL)
   {
     cout << "Failed to create GLFW window" << '\n';
@@ -47,196 +47,43 @@ int main()
   // initialize shaders
   Shader shader("shaders/vertex.txt", "shaders/fragment.txt");
 
-  // initalize data
-  // --------------
-  glEnable(GL_DEPTH_TEST);
-
-  // rectangle vertices
-  float vertices[] = {
-      -0.5f, -0.5f, -0.5f, 0.0f, 0.0f,
-      0.5f, -0.5f, -0.5f, 1.0f, 0.0f,
-      0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
-      0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
-      -0.5f, 0.5f, -0.5f, 0.0f, 1.0f,
-      -0.5f, -0.5f, -0.5f, 0.0f, 0.0f,
-
-      -0.5f, -0.5f, 0.5f, 0.0f, 0.0f,
-      0.5f, -0.5f, 0.5f, 1.0f, 0.0f,
-      0.5f, 0.5f, 0.5f, 1.0f, 1.0f,
-      0.5f, 0.5f, 0.5f, 1.0f, 1.0f,
-      -0.5f, 0.5f, 0.5f, 0.0f, 1.0f,
-      -0.5f, -0.5f, 0.5f, 0.0f, 0.0f,
-
-      -0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
-      -0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
-      -0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
-      -0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
-      -0.5f, -0.5f, 0.5f, 0.0f, 0.0f,
-      -0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
-
-      0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
-      0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
-      0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
-      0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
-      0.5f, -0.5f, 0.5f, 0.0f, 0.0f,
-      0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
-
-      -0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
-      0.5f, -0.5f, -0.5f, 1.0f, 1.0f,
-      0.5f, -0.5f, 0.5f, 1.0f, 0.0f,
-      0.5f, -0.5f, 0.5f, 1.0f, 0.0f,
-      -0.5f, -0.5f, 0.5f, 0.0f, 0.0f,
-      -0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
-
-      -0.5f, 0.5f, -0.5f, 0.0f, 1.0f,
-      0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
-      0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
-      0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
-      -0.5f, 0.5f, 0.5f, 0.0f, 0.0f,
-      -0.5f, 0.5f, -0.5f, 0.0f, 1.0f};
-
-  glm::vec3 cubePositions[] = {
-      glm::vec3(0.0f, 0.0f, 0.0f),
-      glm::vec3(2.0f, -1.0f, -1.0f),
-      glm::vec3(-1.0f, 1.0f, -1.5f),
-  };
-
-  // VAO and VBO
-  unsigned int VBO,
-      VAO, EBO;
-  glGenVertexArrays(1, &VAO);
-  glGenBuffers(1, &VBO);
-  glGenBuffers(1, &EBO);
-  // bind VAO
-  glBindVertexArray(VAO);
-
-  // copy vertices into buffers
-  // --------------------------
-  // VBO
-  glBindBuffer(GL_ARRAY_BUFFER, VBO);
-  glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-  // EBO
-
-  // configure attribute pointers
-  // --------------------------
-  // position
-  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)0);
-  glEnableVertexAttribArray(0);
-  // texture
-  glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)(3 * sizeof(float)));
-  glEnableVertexAttribArray(1);
-
-  // initialize textures
-  unsigned int texture1, texture2;
-  // texture 1
-  // ---------
-  glGenTextures(1, &texture1);
-  glActiveTexture(GL_TEXTURE0);
-  glBindTexture(GL_TEXTURE_2D, texture1);
-  // texture settings
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_NEAREST);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_NEAREST);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-  // load textures
-  int width, height, nrChannels;
-  stbi_set_flip_vertically_on_load(true);
-  unsigned char *data = stbi_load("images/earth.jpg", &width, &height, &nrChannels, 0);
-  if (data)
-  {
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-    glGenerateMipmap(GL_TEXTURE_2D);
-  }
-  else
-  {
-    cout << "Failed to load texture 1" << '\n';
-  }
-  stbi_image_free(data);
-
-  // texture 2
-  // ---------
-  glGenTextures(1, &texture2);
-  glActiveTexture(GL_TEXTURE1);
-  glBindTexture(GL_TEXTURE_2D, texture2);
-  // texture settings
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-  data = stbi_load("images/moon.jpg", &width, &height, &nrChannels, 0);
-  if (data)
-  {
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
-    glGenerateMipmap(GL_TEXTURE_2D);
-  }
-  else
-  {
-    cout << "Failed to load texture 2" << '\n';
-  }
-  stbi_image_free(data);
-
-  // unbind buffers
-  glBindBuffer(GL_ARRAY_BUFFER, 0);
-
+  // initialize projection
+  glm::mat4 projection{glm::ortho(0.0f, (float)SCR_WIDTH, 0.0f, (float)SCR_HEIGHT, -1.0f, 1.0f)};
   shader.use();
-  glUniform1i(glGetUniformLocation(shader.ID, "texture1"), 0);
-  shader.setInt("texture2", 1);
+  shader.setMat4("projection", projection);
+
+  // initialize data
+  Lab lab;
+  lab.balls.push_back(new Ball(glm::vec2(500.0f, 700.0f), 30.0f, 100.0f, glm::vec3(0.8f, 0.2f, 0.2f)));
+  // lab.balls.push_back(new Ball(glm::vec2(300.0f, 700.0f), 30.0f, 100.0f, glm::vec3(1.0f, 1.0f, 1.0f)));
+  float dotTimer = 0.0f;
+  float tI = 0.0f;
   // render loop
   // -----------
   while (!glfwWindowShouldClose(window))
   {
-    // esc -> exit
-    processInput(window);
+    // initialize
+    processInput(window, lab);
+    float tF = glfwGetTime();
+    // cout << "time: " << tF << " ";
+    float dt = tF - tI;
+    tI = tF;
+    lab.update(dt);
+    dotTimer += dt;
+    if (dotTimer >= 0.1f)
+    {
+      cout << "Time: " << glfwGetTime() << "  -->  ";
+      lab.debugLog();
+      dotTimer = 0.0f;
+    }
 
     // render background
-    glClearColor(0.0f, 0.0f, 0.08f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glClearColor(0.0f, 0.0f, 0.09f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
 
-    // active shader
+    // draw
     shader.use();
-    // time
-    float timeValue = glfwGetTime();
-
-    // apply 3D perspective
-    glm::mat4 view = glm::mat4(1.0f);
-    glm::mat4 projection = glm::mat4(1.0f);
-    view = glm::translate(view, glm::vec3(0.0f, 0.0f, -12.0f));
-    projection = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-    // pass to shader
-    shader.setMat4("view", view);
-    shader.setMat4("projection", projection);
-    // render traingle
-    glBindVertexArray(VAO);
-    for (unsigned int i{0}; i < 3; i++)
-    {
-      glm::mat4 model = glm::mat4(1.0f);
-      model = glm::translate(model, cubePositions[i]);
-      if (i == 0)
-      {
-        model = glm::rotate(model, 0.8f * timeValue, glm::vec3(0.2f, 0.6f, 0.1f));
-        shader.setFloat("mixValue", 0.0f);
-      }
-      if (i == 1)
-      {
-        model = glm::rotate(model, timeValue, glm::vec3(0.3f, 0.5f, 0.1f));
-        model = glm::translate(model, glm::vec3(-4.5f, 2.5f, -0.3f));
-        model = glm::scale(model, glm::vec3(0.7f));
-        model = glm::rotate(model, 1.5f * timeValue, glm::vec3(0.2f, 0.6f, 0.1f));
-        shader.setFloat("mixValue", 1.0f);
-      }
-      if (i == 2)
-      {
-        model = glm::rotate(model, timeValue, glm::vec3(0.6f, 1.0f, -0.2f));
-        model = glm::translate(model, glm::vec3(4.0f, -2.5f, 0.4f));
-        model = glm::scale(model, glm::vec3(0.7f));
-        model = glm::rotate(model, 1.9f * timeValue, glm::vec3(0.2f, 0.6f, 0.1f));
-        shader.setFloat("mixValue", 1.0f);
-      }
-
-      shader.setMat4("model", model);
-
-      glDrawArrays(GL_TRIANGLES, 0, 36);
-    }
+    lab.render(shader);
 
     // swap buffers, handle IO
     glfwSwapBuffers(window);
@@ -244,9 +91,6 @@ int main()
   }
 
   // clear all resources
-  glDeleteVertexArrays(1, &VAO);
-  glDeleteBuffers(1, &VBO);
-  glDeleteBuffers(1, &EBO);
   shader._delete();
   glfwTerminate();
   return 0;
@@ -256,10 +100,15 @@ void framebuffer_size_callbacK(GLFWwindow *window, int width, int height)
 {
   glViewport(0, 0, height, width);
 }
-void processInput(GLFWwindow *window)
+void processInput(GLFWwindow *window, Lab &lab)
 {
   if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
   {
     glfwSetWindowShouldClose(window, true);
+  }
+  if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS)
+  {
+    lab.reset();
+    glfwSetTime(0.0f);
   }
 }
