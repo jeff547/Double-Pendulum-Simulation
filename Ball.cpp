@@ -7,7 +7,7 @@
 
 unsigned int Ball::VAO = 0;
 
-Ball::Ball(glm::vec2 pos, float m, float r, glm::vec3 c) : RigidBody(m, pos), radius(r), color(c)
+Ball::Ball(glm::vec2 position, float mass, float radius, glm::vec3 color) : RigidBody(mass, position), radius(radius), color(color)
 {
     if (VAO == 0)
     {

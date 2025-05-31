@@ -13,6 +13,8 @@
 				"-g",
 				"-I${workspaceFolder}/dependencies/include",
 				"-L${workspaceFolder}/dependencies/library",
+				"-I/opt/homebrew/opt/boost/include",
+				"-L/opt/homebrew/opt/boost/lib",
 				"${workspaceFolder}/main.cpp",
 				"${workspaceFolder}/Ball.cpp",
 				"${workspaceFolder}/Lab.cpp",

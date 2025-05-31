@@ -10,10 +10,10 @@
 class Ball : public RigidBody
 {
 public:
-    float radius;
-    glm::vec3 color;
+    float radius;    // radius of the ball
+    glm::vec3 color; // color of the ball
 
-    Ball(glm::vec2 pos, float m, float r, glm::vec3 c);
+    Ball(glm::vec2 position, float mass, float radius, glm::vec3 color);
     ~Ball();
 
     void render(Shader &shader);
