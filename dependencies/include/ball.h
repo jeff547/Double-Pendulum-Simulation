@@ -10,8 +10,10 @@
 class Ball : public RigidBody
 {
 public:
-    float radius;    // radius of the ball
-    glm::vec3 color; // color of the ball
+    float radius;                     // radius of the ball
+    glm::vec3 color;                  // color of the ball
+    std::array<glm::vec2, 1000> path; // tracks the path of motion
+    short index;
 
     Ball(glm::vec2 position, float mass, float radius, glm::vec3 color);
     ~Ball();
@@ -22,8 +24,8 @@ public:
     void debugLog();
 
 private:
-    static unsigned int VAO;
-    static void initRenderData();
+    unsigned int ballVAO, ballVBO, pathVAO, pathVBO;
+    void initRenderData();
 };
 
 #endif

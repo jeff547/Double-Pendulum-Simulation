@@ -5,34 +5,48 @@
 
 void Lab::render(Shader &shader)
 {
-    for (Ball *ball : balls)
+    for (DoublePendulum *dp : Pendulums)
     {
-        ball->render(shader);
+        dp->render(shader);
     }
+    // for (Ball *ball : balls)
+    // {
+    //     ball->render(shader);
+    // }
 }
 
 void Lab::update(float dt)
 {
-    for (Ball *ball : balls)
+    time += dt;
+    for (DoublePendulum *dp : Pendulums)
     {
-        ball->acceleration += gravitationalAcceleration;
-
-        ball->update(dt);
+        dp->update(time, dt);
     }
+    // for (Ball *ball : balls)
+    // {
+    //     ball->acceleration += gravitationalAcceleration;
+
+    //     ball->update(dt);
+    // }
 }
 
 void Lab::reset()
 {
-    for (Ball *ball : balls)
-    {
-        ball->reset();
-    }
+    // for (Ball *ball : balls)
+    // {
+    //     ball->reset();
+    // }
 }
 
 void Lab::debugLog()
 {
-    for (Ball *ball : balls)
+    std::cout << "Time: " << time << "  -->  ";
+    for (DoublePendulum *dp : Pendulums)
     {
-        ball->debugLog();
+        dp->debugLog();
     }
+    // for (Ball *ball : balls)
+    // {
+    //     ball->debugLog();
+    // }
 }

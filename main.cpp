@@ -48,15 +48,19 @@ int main()
   Shader shader("shaders/vertex.txt", "shaders/fragment.txt");
 
   // initialize projection
-  glm::mat4 projection{glm::ortho(0.0f, (float)SCR_WIDTH, 0.0f, (float)SCR_HEIGHT, -1.0f, 1.0f)};
+  // physics scale
+  float world_size = 2.5f;
+  glm::mat4 projection{glm::ortho(-world_size, world_size, -world_size, world_size, -1.0f, 1.0f)};
   shader.use();
   shader.setMat4("projection", projection);
 
   // initialize data
   Lab lab;
-  lab.balls.push_back(new Ball(glm::vec2(500.0f, 700.0f), 30.0f, 100.0f, glm::vec3(0.8f, 0.2f, 0.2f)));
-  // lab.balls.push_back(new Ball(glm::vec2(300.0f, 700.0f), 30.0f, 100.0f, glm::vec3(1.0f, 1.0f, 1.0f)));
-  float dotTimer = 0.0f;
+  glm::vec2 pos{0.0f, 1.0f};
+  glm::vec3 color1{1.0f, 0.0f, 0.0f};
+  glm::vec3 color2{0.0f, 1.0f, 0.0f};
+
+  lab.Pendulums.push_back(new DoublePendulum(pos, 3.0, 2.0f, 0.15, 0.15, color1, color2, 1.0, 1.0, M_PI_2, M_PI_4, 0.0, 0.0));
   float tI = 0.0f;
   // render loop
   // -----------
@@ -65,17 +69,11 @@ int main()
     // initialize
     processInput(window, lab);
     float tF = glfwGetTime();
-    // cout << "time: " << tF << " ";
     float dt = tF - tI;
     tI = tF;
+    // render
     lab.update(dt);
-    dotTimer += dt;
-    if (dotTimer >= 0.1f)
-    {
-      cout << "Time: " << glfwGetTime() << "  -->  ";
-      lab.debugLog();
-      dotTimer = 0.0f;
-    }
+    lab.debugLog();
 
     // render background
     glClearColor(0.0f, 0.0f, 0.09f, 1.0f);
