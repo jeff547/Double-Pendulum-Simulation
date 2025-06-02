@@ -1,5 +1,4 @@
 #include "double_pendulum.h"
-#include <cmath>
 #include <boost/numeric/odeint.hpp>
 #include "shader.h"
 #include "ball.h"
@@ -8,8 +7,8 @@ using namespace boost::numeric::odeint;
 
 DoublePendulum::DoublePendulum(glm::vec2 position, double mass_1, double mass_2, float radius_1, float radius_2,
                                glm::vec3 color_1, glm::vec3 color_2, float length_1, float length_2, double theta1, double theta2,
-                               double omega1, double omega2)
-    : DP_motion_equations(mass_1, mass_2, length_1, length_2, 9.81),
+                               double omega1, double omega2, float gravity)
+    : DP_motion_equations(mass_1, mass_2, length_1, length_2, gravity),
       stepper(),
       state({theta1, omega1, theta2, omega2}),
       pivot(position, 1.0f, 0.03f, glm::vec3(1.0f, 1.0f, 1.0f)),
@@ -28,9 +27,11 @@ void DoublePendulum::update(float time, float dt)
   // bob 1
   bob_1.position.x = position.x + length_1 * sin(state[0]);
   bob_1.position.y = position.y - length_1 * cos(state[0]);
+  bob_1.update(dt, true);
   // bob 2
   bob_2.position.x = bob_1.position.x + length_2 * sin(state[2]);
   bob_2.position.y = bob_1.position.y - length_2 * cos(state[2]);
+  bob_2.update(dt, true);
   // rods
   rod_1.angle = state[0];
   rod_2.angle = state[2];
@@ -52,6 +53,7 @@ void DoublePendulum::render(Shader &shader)
 
 void DoublePendulum::debugLog()
 {
-  std::cout << "Bob 1: (" << bob_1.position.x << ", " << bob_1.position.y
+  bob_2.debugLog();
+  std::cout << std::fixed << std::setprecision(3) << "Bob 1: (" << bob_1.position.x << ", " << bob_1.position.y
             << ")         Bob 2: (" << bob_2.position.x << ", " << bob_2.position.y << ")\n";
 }

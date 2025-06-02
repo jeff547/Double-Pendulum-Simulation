@@ -3,7 +3,6 @@
 
 #include "ball.h"
 #include "rod.h"
-#include <glm/glm.hpp>
 #include "ode.h"
 #include <boost/numeric/odeint.hpp>
 
@@ -13,7 +12,7 @@ class DoublePendulum
 {
 public:
     DoublePendulum(glm::vec2 position, double mass_1, double mass_2, float radius_1, float radius_2, glm::vec3 color_1, glm::vec3 color_2,
-                   float length_1, float length_2, double theta1, double theta2, double omega1, double omega2);
+                   float length_1, float length_2, double theta1, double theta2, double omega1, double omega2, float gravity);
     void update(float time, float dt);
     void render(Shader &shader);
     void debugLog();

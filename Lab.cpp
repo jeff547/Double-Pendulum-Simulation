@@ -1,6 +1,5 @@
 #include "shader.h"
 #include <iostream>
-#include "ball.h"
 #include "lab.h"
 
 void Lab::render(Shader &shader)

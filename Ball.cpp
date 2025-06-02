@@ -1,11 +1,8 @@
-#include <glm/glm.hpp>
 #include <iostream>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
 #include "shader.h"
 #include "ball.h"
 
-Ball::Ball(glm::vec2 position, float mass, float radius, glm::vec3 color) : RigidBody(mass, position), radius(radius), color(color), index(0)
+Ball::Ball(glm::vec2 position, float mass, float radius, glm::vec3 color) : RigidBody(mass, position), radius(radius), color(color)
 {
     initRenderData();
 };
@@ -18,24 +15,19 @@ Ball::~Ball()
     glDeleteBuffers(1, &pathVBO);
 }
 
-// debug log
 void Ball::debugLog()
 {
-    std::cout << "y-velocity: " << velocity.y << ",   y_position: " << position.y
-              << ",   x-velocity: " << velocity.x << ",   x_position: " << position.x << '\n';
+    // std::cout << "y-velocity: " << velocity.y << ",   y_position: " << position.y
+    //           << ",   x-velocity: " << velocity.x << ",   x_position: " << position.x << '\n';
+    // std::cout << "Path: (" << path[index].x << ", " << path[index].y << ")     ";
 }
 
-void Ball::update(float dt)
+void Ball::update(float dt, bool draw_path)
 {
     RigidBody::update(dt);
-    path[index % path.size()] = position;
-    ++index;
-
-    // floor bounce
-    if (position.y - radius < 0.0f)
+    if (draw_path)
     {
-        position.y = radius;
-        velocity.y *= -0.95;
+        path.push_back(position);
     }
 }
 
@@ -77,7 +69,6 @@ void Ball::initRenderData()
 
     glBindVertexArray(pathVAO);
     glBindBuffer(GL_ARRAY_BUFFER, pathVBO);
-    glBufferData(GL_ARRAY_BUFFER, path.size() * sizeof(glm::vec2), path.data(), GL_DYNAMIC_DRAW);
 
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(glm::vec2), (void *)0);
     glEnableVertexAttribArray(0);
@@ -95,20 +86,23 @@ void Ball::render(Shader &shader)
     model = glm::translate(model, glm::vec3(position, 0.0f));
     model = glm::scale(model, glm::vec3(radius, radius, 1.0f));
     shader.setMat4("model", model);
-    shader.setVec3("color", color);
+    shader.setVec4("color", glm::vec4(color, 1.0f));
 
     glBindVertexArray(ballVAO);
     glDrawArrays(GL_TRIANGLE_FAN, 0, 101 + 2);
     glBindVertexArray(0);
 
     // Render Path of motion
-    shader.setMat4("model", glm::mat4(1.0f));
-    shader.setVec3("color", color);
+    if (path.size() > 0)
+    {
+        glBindBuffer(GL_ARRAY_BUFFER, pathVBO);
+        glBufferData(GL_ARRAY_BUFFER, path.size() * sizeof(glm::vec2), path.data(), GL_DYNAMIC_DRAW);
 
-    glBindBuffer(GL_ARRAY_BUFFER, pathVBO);
-    glBufferData(GL_ARRAY_BUFFER, path.size() * sizeof(glm::vec2), path.data(), GL_DYNAMIC_DRAW);
+        shader.setMat4("model", glm::mat4(1.0f));
+        shader.setVec4("color", glm::vec4(color, 0.55f));
 
-    glBindVertexArray(pathVAO);
-    glDrawArrays(GL_LINE_STRIP, 0, path.size());
-    glBindVertexArray(0);
+        glBindVertexArray(pathVAO);
+        glDrawArrays(GL_LINE_STRIP, 0, path.size());
+        glBindVertexArray(0);
+    }
 }

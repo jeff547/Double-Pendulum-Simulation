@@ -1,5 +1,4 @@
 #include "rod.h"
-#include <glad/glad.h>
 #include <iostream>
 
 Rod::Rod(glm::vec2 position, float mass, float length, glm::vec3 color, float angle)
@@ -50,11 +49,9 @@ void Rod::render(Shader &shader)
 
     shader.use();
     shader.setMat4("model", glm::mat4(1.0f));
-    shader.setVec3("color", color);
+    shader.setVec4("color", glm::vec4(color, 1.0f));
 
     glBindVertexArray(VAO);
-    glLineWidth(10.0f);
     glDrawArrays(GL_LINES, 0, 2);
-    glLineWidth(1.0f);
     glBindVertexArray(0);
 }
