@@ -9,7 +9,7 @@
 					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
 					{
-						"string" : "3.10.0"
+						"string" : "3.12"
 					},
 					"projectIndex" : 0,
 					"source" : ".",
@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "Double_Pendulum_Simulation::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Double_Pendulum_Simulation-Debug-efa4d40b9409fcea5ae0.json",
+					"jsonFile" : "target-Double_Pendulum_Simulation-Debug-7fafefd8e3494fc366f9.json",
 					"name" : "Double_Pendulum_Simulation",
 					"projectIndex" : 0
 				}
@@ -49,7 +49,7 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/Users/jeff547/Developer/Computer Graphics/Double Pendulum Simulation/out/build/main",
+		"build" : "/Users/jeff547/Developer/Computer Graphics/Double Pendulum Simulation/out/build/default",
 		"source" : "/Users/jeff547/Developer/Computer Graphics/Double Pendulum Simulation"
 	},
 	"version" : 

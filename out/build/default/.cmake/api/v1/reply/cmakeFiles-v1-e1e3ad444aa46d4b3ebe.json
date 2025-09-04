@@ -1,4 +1,29 @@
 {
+	"globsDependent" : 
+	[
+		{
+			"expression" : "/Users/jeff547/Developer/Computer Graphics/Double Pendulum Simulation/*.c",
+			"listDirectories" : true,
+			"paths" : 
+			[
+				"/Users/jeff547/Developer/Computer Graphics/Double Pendulum Simulation/glad.c"
+			]
+		},
+		{
+			"expression" : "/Users/jeff547/Developer/Computer Graphics/Double Pendulum Simulation/*.cpp",
+			"listDirectories" : true,
+			"paths" : 
+			[
+				"/Users/jeff547/Developer/Computer Graphics/Double Pendulum Simulation/Ball.cpp",
+				"/Users/jeff547/Developer/Computer Graphics/Double Pendulum Simulation/DoublePendulum.cpp",
+				"/Users/jeff547/Developer/Computer Graphics/Double Pendulum Simulation/DoublePendulumODE.cpp",
+				"/Users/jeff547/Developer/Computer Graphics/Double Pendulum Simulation/Lab.cpp",
+				"/Users/jeff547/Developer/Computer Graphics/Double Pendulum Simulation/RigidBody.cpp",
+				"/Users/jeff547/Developer/Computer Graphics/Double Pendulum Simulation/Rod.cpp",
+				"/Users/jeff547/Developer/Computer Graphics/Double Pendulum Simulation/main.cpp"
+			]
+		}
+	],
 	"inputs" : 
 	[
 		{
@@ -6,7 +31,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "out/build/main/CMakeFiles/3.31.2/CMakeSystem.cmake"
+			"path" : "out/build/default/CMakeFiles/3.31.2/CMakeSystem.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -20,11 +45,11 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "out/build/main/CMakeFiles/3.31.2/CMakeCCompiler.cmake"
+			"path" : "out/build/default/CMakeFiles/3.31.2/CMakeCCompiler.cmake"
 		},
 		{
 			"isGenerated" : true,
-			"path" : "out/build/main/CMakeFiles/3.31.2/CMakeCXXCompiler.cmake"
+			"path" : "out/build/default/CMakeFiles/3.31.2/CMakeCXXCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -205,12 +230,28 @@
 			"isCMake" : true,
 			"isExternal" : true,
 			"path" : "/opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/opt/homebrew/lib/cmake/Boost-1.88.0/BoostConfigVersion.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/opt/homebrew/lib/cmake/Boost-1.88.0/BoostConfig.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/opt/homebrew/lib/cmake/boost_headers-1.88.0/boost_headers-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/opt/homebrew/lib/cmake/boost_headers-1.88.0/boost_headers-config.cmake"
 		}
 	],
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "/Users/jeff547/Developer/Computer Graphics/Double Pendulum Simulation/out/build/main",
+		"build" : "/Users/jeff547/Developer/Computer Graphics/Double Pendulum Simulation/out/build/default",
 		"source" : "/Users/jeff547/Developer/Computer Graphics/Double Pendulum Simulation"
 	},
 	"version" : 

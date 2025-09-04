@@ -2,16 +2,56 @@
 	"entries" : 
 	[
 		{
-			"name" : "BUILD_TESTING",
+			"name" : "Boost_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for Boost."
+				}
+			],
+			"type" : "PATH",
+			"value" : "/opt/homebrew/lib/cmake/Boost-1.88.0"
+		},
+		{
+			"name" : "Boost_FILESYSTEM_LIBRARY_RELEASE",
 			"properties" : 
 			[
 				{
 					"name" : "HELPSTRING",
-					"value" : "Build the testing tree."
+					"value" : ""
 				}
 			],
-			"type" : "BOOL",
-			"value" : "ON"
+			"type" : "STRING",
+			"value" : "/opt/homebrew/lib/libboost_filesystem.dylib"
+		},
+		{
+			"name" : "Boost_INCLUDE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a file."
+				}
+			],
+			"type" : "PATH",
+			"value" : "/opt/homebrew/include"
+		},
+		{
+			"name" : "Boost_SYSTEM_LIBRARY_RELEASE",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "STRING",
+			"value" : "/opt/homebrew/lib/libboost_system.dylib"
 		},
 		{
 			"name" : "CMAKE_ADDR2LINE",
@@ -67,7 +107,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/jeff547/Developer/Computer Graphics/Double Pendulum Simulation/out/build/main"
+			"value" : "/Users/jeff547/Developer/Computer Graphics/Double Pendulum Simulation/out/build/default"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -507,7 +547,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/jeff547/Developer/Computer Graphics/Double Pendulum Simulation/out/build/main/CMakeFiles/pkgRedirects"
+			"value" : "/Users/jeff547/Developer/Computer Graphics/Double Pendulum Simulation/out/build/default/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -595,7 +635,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "/Users/jeff547/Developer/Computer Graphics/Double Pendulum Simulation/out/install/main"
+			"value" : "/Users/jeff547/Developer/Computer Graphics/Double Pendulum Simulation/out/install/default"
 		},
 		{
 			"name" : "CMAKE_LINKER",
@@ -1210,86 +1250,6 @@
 			"value" : "FALSE"
 		},
 		{
-			"name" : "COVERAGE_COMMAND",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Path to the coverage program that CTest uses for performing coverage inspection"
-				}
-			],
-			"type" : "FILEPATH",
-			"value" : "/usr/bin/gcov"
-		},
-		{
-			"name" : "COVERAGE_EXTRA_FLAGS",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Extra command line flags to pass to the coverage tool"
-				}
-			],
-			"type" : "STRING",
-			"value" : "-l"
-		},
-		{
-			"name" : "CTEST_SUBMIT_RETRY_COUNT",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "How many times to retry timed-out CTest submissions."
-				}
-			],
-			"type" : "STRING",
-			"value" : "3"
-		},
-		{
-			"name" : "CTEST_SUBMIT_RETRY_DELAY",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "How long to wait between timed-out CTest submissions."
-				}
-			],
-			"type" : "STRING",
-			"value" : "5"
-		},
-		{
-			"name" : "DART_TESTING_TIMEOUT",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Maximum time allowed before CTest will kill the test."
-				}
-			],
-			"type" : "STRING",
-			"value" : "1500"
-		},
-		{
 			"name" : "Double_Pendulum_Simulation_BINARY_DIR",
 			"properties" : 
 			[
@@ -1299,7 +1259,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/jeff547/Developer/Computer Graphics/Double Pendulum Simulation/out/build/main"
+			"value" : "/Users/jeff547/Developer/Computer Graphics/Double Pendulum Simulation/out/build/default"
 		},
 		{
 			"name" : "Double_Pendulum_Simulation_IS_TOP_LEVEL",
@@ -1326,71 +1286,463 @@
 			"value" : "/Users/jeff547/Developer/Computer Graphics/Double Pendulum Simulation"
 		},
 		{
-			"name" : "GITCOMMAND",
+			"name" : "FIND_PACKAGE_MESSAGE_DETAILS_Boost",
 			"properties" : 
 			[
 				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
 					"name" : "HELPSTRING",
-					"value" : "Path to a program."
+					"value" : "Details about finding Boost"
 				}
 			],
-			"type" : "FILEPATH",
-			"value" : "/usr/bin/git"
+			"type" : "INTERNAL",
+			"value" : "[/opt/homebrew/lib/cmake/Boost-1.88.0/BoostConfig.cmake][c ][v1.88.0(1.83.0)]"
 		},
 		{
-			"name" : "MAKECOMMAND",
+			"name" : "FIND_PACKAGE_MESSAGE_DETAILS_OpenGL",
 			"properties" : 
 			[
 				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
 					"name" : "HELPSTRING",
-					"value" : "Command to build the project"
+					"value" : "Details about finding OpenGL"
 				}
 			],
-			"type" : "STRING",
-			"value" : "/opt/homebrew/bin/cmake --build . --config \"${CTEST_CONFIGURATION_TYPE}\""
+			"type" : "INTERNAL",
+			"value" : "[/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/OpenGL.framework][/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/OpenGL.framework][c ][v()]"
 		},
 		{
-			"name" : "MEMORYCHECK_COMMAND",
+			"name" : "FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig",
 			"properties" : 
 			[
 				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
 					"name" : "HELPSTRING",
-					"value" : "Path to the memory checking command, used for memory error detection."
+					"value" : "Details about finding PkgConfig"
 				}
 			],
-			"type" : "FILEPATH",
-			"value" : "MEMORYCHECK_COMMAND-NOTFOUND"
+			"type" : "INTERNAL",
+			"value" : "[/opt/homebrew/bin/pkg-config][v2.4.3()]"
 		},
 		{
-			"name" : "MEMORYCHECK_SUPPRESSIONS_FILE",
+			"name" : "GLFW_CFLAGS",
 			"properties" : 
 			[
 				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
 					"name" : "HELPSTRING",
-					"value" : "File that contains suppressions for the memory checker"
+					"value" : ""
 				}
 			],
-			"type" : "FILEPATH",
+			"type" : "INTERNAL",
+			"value" : "-I/opt/homebrew/Cellar/glfw/3.4/include"
+		},
+		{
+			"name" : "GLFW_CFLAGS_I",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
 			"value" : ""
 		},
 		{
-			"name" : "SITE",
+			"name" : "GLFW_CFLAGS_OTHER",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "GLFW_FOUND",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "1"
+		},
+		{
+			"name" : "GLFW_INCLUDEDIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "/opt/homebrew/Cellar/glfw/3.4/include"
+		},
+		{
+			"name" : "GLFW_INCLUDE_DIRS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "/opt/homebrew/Cellar/glfw/3.4/include"
+		},
+		{
+			"name" : "GLFW_LDFLAGS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "-L/opt/homebrew/Cellar/glfw/3.4/lib;-lglfw"
+		},
+		{
+			"name" : "GLFW_LDFLAGS_OTHER",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "GLFW_LIBDIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "/opt/homebrew/Cellar/glfw/3.4/lib"
+		},
+		{
+			"name" : "GLFW_LIBRARIES",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "glfw"
+		},
+		{
+			"name" : "GLFW_LIBRARY_DIRS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "/opt/homebrew/Cellar/glfw/3.4/lib"
+		},
+		{
+			"name" : "GLFW_LIBS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "GLFW_LIBS_L",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "GLFW_LIBS_OTHER",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "GLFW_LIBS_PATHS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "GLFW_MODULE_NAME",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "glfw3"
+		},
+		{
+			"name" : "GLFW_PREFIX",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "/opt/homebrew/Cellar/glfw/3.4"
+		},
+		{
+			"name" : "GLFW_STATIC_CFLAGS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "-I/opt/homebrew/Cellar/glfw/3.4/include"
+		},
+		{
+			"name" : "GLFW_STATIC_CFLAGS_I",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "GLFW_STATIC_CFLAGS_OTHER",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "GLFW_STATIC_INCLUDE_DIRS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "/opt/homebrew/Cellar/glfw/3.4/include"
+		},
+		{
+			"name" : "GLFW_STATIC_LDFLAGS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "-L/opt/homebrew/Cellar/glfw/3.4/lib;-lglfw;-framework;Cocoa;-framework;IOKit;-framework;CoreFoundation"
+		},
+		{
+			"name" : "GLFW_STATIC_LDFLAGS_OTHER",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "-framework;Cocoa;-framework;IOKit;-framework;CoreFoundation"
+		},
+		{
+			"name" : "GLFW_STATIC_LIBDIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "GLFW_STATIC_LIBRARIES",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "glfw"
+		},
+		{
+			"name" : "GLFW_STATIC_LIBRARY_DIRS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "/opt/homebrew/Cellar/glfw/3.4/lib"
+		},
+		{
+			"name" : "GLFW_STATIC_LIBS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "GLFW_STATIC_LIBS_L",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "GLFW_STATIC_LIBS_OTHER",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "GLFW_STATIC_LIBS_PATHS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "GLFW_VERSION",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "3.4.0"
+		},
+		{
+			"name" : "GLFW_glfw3_INCLUDEDIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "GLFW_glfw3_LIBDIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "GLFW_glfw3_PREFIX",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "GLFW_glfw3_VERSION",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "OPENGL_GLU_INCLUDE_DIR",
 			"properties" : 
 			[
 				{
@@ -1399,11 +1751,195 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "Name of the computer/site where compile is being run"
+					"value" : "Include for the OpenGL GLU library"
+				}
+			],
+			"type" : "PATH",
+			"value" : "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/OpenGL.framework"
+		},
+		{
+			"name" : "OPENGL_INCLUDE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "Include for OpenGL"
+				}
+			],
+			"type" : "PATH",
+			"value" : "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/OpenGL.framework"
+		},
+		{
+			"name" : "OPENGL_gl_LIBRARY",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "OpenGL GL library"
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/OpenGL.framework"
+		},
+		{
+			"name" : "OPENGL_glu_LIBRARY",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "OpenGL GLU library"
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/OpenGL.framework"
+		},
+		{
+			"name" : "PKG_CONFIG_ARGN",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "Arguments to supply to pkg-config"
 				}
 			],
 			"type" : "STRING",
-			"value" : "diaxosvid17.rad.rutgers.edu"
+			"value" : ""
+		},
+		{
+			"name" : "PKG_CONFIG_EXECUTABLE",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "pkg-config executable"
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "/opt/homebrew/bin/pkg-config"
+		},
+		{
+			"name" : "__pkg_config_checked_GLFW",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "1"
+		},
+		{
+			"name" : "boost_atomic_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for boost_atomic."
+				}
+			],
+			"type" : "PATH",
+			"value" : "/opt/homebrew/lib/cmake/boost_atomic-1.88.0"
+		},
+		{
+			"name" : "boost_filesystem_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for boost_filesystem."
+				}
+			],
+			"type" : "PATH",
+			"value" : "/opt/homebrew/lib/cmake/boost_filesystem-1.88.0"
+		},
+		{
+			"name" : "boost_headers_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for boost_headers."
+				}
+			],
+			"type" : "PATH",
+			"value" : "/opt/homebrew/lib/cmake/boost_headers-1.88.0"
+		},
+		{
+			"name" : "boost_system_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for boost_system."
+				}
+			],
+			"type" : "PATH",
+			"value" : "/opt/homebrew/lib/cmake/boost_system-1.88.0"
+		},
+		{
+			"name" : "pkgcfg_lib_GLFW_glfw",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a library."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "/opt/homebrew/Cellar/glfw/3.4/lib/libglfw.dylib"
+		},
+		{
+			"name" : "prefix_result",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "/opt/homebrew/Cellar/glfw/3.4/lib"
 		}
 	],
 	"kind" : "cache",
