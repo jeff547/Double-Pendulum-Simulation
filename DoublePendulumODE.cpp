@@ -15,7 +15,7 @@ void DoublePendulumMotion::operator()(const std::vector<double> &x, std::vector<
 
     double b11 = L1 * (m1 + m2);
     double b12 = m2 * L2 * cos_theta;
-    double b21 = -L2 * cos_theta;
+    double b21 = -L1 * cos_theta;
     double b22 = -L2;
 
     double c1 = (m1 + m2) * g * sin(theta1) + m2 * L2 * pow(omega2, 2) * sin_theta;

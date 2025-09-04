@@ -88,6 +88,7 @@ void Ball::render(Shader &shader)
     shader.setMat4("model", model);
     shader.setVec4("color", glm::vec4(color, 1.0f));
 
+    // Comment to Hide
     glBindVertexArray(ballVAO);
     glDrawArrays(GL_TRIANGLE_FAN, 0, 101 + 2);
     glBindVertexArray(0);

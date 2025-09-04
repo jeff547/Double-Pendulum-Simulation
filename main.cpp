@@ -12,6 +12,7 @@ using namespace std;
 
 void framebuffer_size_callbacK(GLFWwindow *window, int width, int height);
 void processInput(GLFWwindow *window, Lab &lab);
+bool startSimulation{false};
 
 int main()
 {
@@ -92,13 +93,72 @@ int main()
 
   double omega = 0.0;
 
-  glm::vec3 blue{0.4f, 0.7f, 1.0f};
   glm::vec3 orange{1.0f, 0.7f, 0.3f};
+  glm::vec3 blue{0.4f, 0.7f, 1.0f};
+  std::vector<glm::vec3> colors = {
+      {1.00f, 0.00f, 0.00f}, // Red
+      {1.00f, 0.25f, 0.00f},
+      {1.00f, 0.50f, 0.00f}, // Orange
+      {1.00f, 0.75f, 0.00f},
+      {1.00f, 1.00f, 0.00f}, // Yellow
+      {0.75f, 1.00f, 0.00f},
+      {0.50f, 1.00f, 0.00f},
+      {0.25f, 1.00f, 0.00f},
+      {0.00f, 1.00f, 0.00f}, // Green
+      {0.00f, 1.00f, 0.25f},
 
-  lab.Pendulums.push_back(new DoublePendulum(pos, mass_1, mass_2, radius, radius, blue, orange, length_1, length_2, theta_1, theta_2, omega, omega, gravity));
+      {0.00f, 1.00f, 0.50f},
+      {0.00f, 1.00f, 0.75f},
+      {0.00f, 1.00f, 1.00f}, // Cyan
+      {0.00f, 0.75f, 1.00f},
+      {0.00f, 0.50f, 1.00f},
+      {0.00f, 0.25f, 1.00f},
+      {0.00f, 0.00f, 1.00f}, // Blue
+      {0.25f, 0.00f, 1.00f},
+      {0.50f, 0.00f, 1.00f},
+      {0.75f, 0.00f, 1.00f},
+
+      {1.00f, 0.00f, 1.00f}, // Magenta
+      {1.00f, 0.00f, 0.75f},
+      {1.00f, 0.00f, 0.50f},
+      {1.00f, 0.00f, 0.25f},
+      {1.00f, 0.20f, 0.60f}, // Rose
+      {1.00f, 0.40f, 0.20f}, // Coral
+      {1.00f, 0.60f, 0.00f},
+      {0.90f, 0.80f, 0.00f},
+      {0.60f, 1.00f, 0.40f},
+      {0.40f, 1.00f, 0.60f},
+
+      {0.20f, 1.00f, 0.80f},
+      {0.20f, 0.80f, 1.00f},
+      {0.20f, 0.60f, 1.00f},
+      {0.20f, 0.40f, 1.00f},
+      {0.40f, 0.20f, 1.00f},
+      {0.60f, 0.20f, 1.00f},
+      {0.80f, 0.20f, 1.00f},
+      {1.00f, 0.20f, 0.80f},
+      {1.00f, 0.40f, 0.60f},
+      {1.00f, 0.60f, 0.40f},
+
+      {1.00f, 0.80f, 0.20f},
+      {0.80f, 1.00f, 0.20f},
+      {0.60f, 1.00f, 0.20f},
+      {0.40f, 1.00f, 0.20f},
+      {0.20f, 1.00f, 0.40f},
+      {0.20f, 1.00f, 0.60f},
+      {0.20f, 1.00f, 0.80f},
+      {0.20f, 0.80f, 1.00f},
+      {0.60f, 0.20f, 1.00f},
+      {1.00f, 0.20f, 0.60f},
+  };
+
+  for (int i{0}; i < 15; ++i)
+  {
+    lab.Pendulums.push_back(new DoublePendulum(pos, mass_1, mass_2, radius, radius, blue, colors[i % 50], length_1, length_2, theta_1, theta_2 + i * 1e-4, omega, omega, gravity));
+  }
 
   // render loop
-  // -----------
+  // -----------∫
   while (!glfwWindowShouldClose(window))
   {
     // initialize
@@ -106,17 +166,21 @@ int main()
     float tF = glfwGetTime();
     float dt = tF - tI;
     tI = tF;
-    // render
-    lab.update(dt);
-    lab.debugLog();
 
     // render background
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    // draw
-    shader.use();
-    lab.render(shader);
+    if (startSimulation)
+    {
+      // render
+      lab.update(dt);
+      lab.debugLog();
+
+      // draw
+      shader.use();
+      lab.render(shader);
+    }
 
     // swap buffers, handle IO
     glfwSwapBuffers(window);
@@ -143,5 +207,9 @@ void processInput(GLFWwindow *window, Lab &lab)
   {
     lab.reset();
     glfwSetTime(0.0f);
+  }
+  if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
+  {
+    startSimulation = true;
   }
 }
