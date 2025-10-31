@@ -5,17 +5,17 @@
 # compile CXX with /usr/bin/clang++
 C_DEFINES = 
 
-C_INCLUDES = -I/opt/homebrew/include -I"/Users/jeff547/Developer/Computer Graphics/Double Pendulum Simulation/dependencies/include"
+C_INCLUDES = -I/opt/homebrew/include -I"/Users/jeff547/Developer/ComputerGraphics/Double Pendulum Simulation/dependencies/include"
 
-C_FLAGSarm64 = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk
+C_FLAGSarm64 = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk -mmacosx-version-min=15.6
 
-C_FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk
+C_FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk -mmacosx-version-min=15.6
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/opt/homebrew/include -I"/Users/jeff547/Developer/Computer Graphics/Double Pendulum Simulation/dependencies/include"
+CXX_INCLUDES = -I/opt/homebrew/include -I"/Users/jeff547/Developer/ComputerGraphics/Double Pendulum Simulation/dependencies/include"
 
-CXX_FLAGSarm64 = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk
+CXX_FLAGSarm64 = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk -mmacosx-version-min=15.6
 
-CXX_FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk
+CXX_FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk -mmacosx-version-min=15.6
 

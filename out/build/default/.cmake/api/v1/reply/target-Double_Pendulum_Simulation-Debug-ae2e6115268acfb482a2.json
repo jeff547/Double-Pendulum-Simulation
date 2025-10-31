@@ -55,7 +55,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk"
+					"fragment" : "-g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk -mmacosx-version-min=15.6"
 				}
 			],
 			"includes" : 
@@ -66,7 +66,7 @@
 				},
 				{
 					"backtrace" : 4,
-					"path" : "/Users/jeff547/Developer/Computer Graphics/Double Pendulum Simulation/dependencies/include"
+					"path" : "/Users/jeff547/Developer/ComputerGraphics/Double Pendulum Simulation/dependencies/include"
 				}
 			],
 			"language" : "CXX",
@@ -93,7 +93,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk"
+					"fragment" : "-g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk -mmacosx-version-min=15.6"
 				}
 			],
 			"includes" : 
@@ -104,7 +104,7 @@
 				},
 				{
 					"backtrace" : 4,
-					"path" : "/Users/jeff547/Developer/Computer Graphics/Double Pendulum Simulation/dependencies/include"
+					"path" : "/Users/jeff547/Developer/ComputerGraphics/Double Pendulum Simulation/dependencies/include"
 				}
 			],
 			"language" : "C",
@@ -129,7 +129,7 @@
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "\"/Users/jeff547/Developer/Computer Graphics/Double Pendulum Simulation/dependencies/library/libglfw.3.4.dylib\"",
+				"fragment" : "\"/Users/jeff547/Developer/ComputerGraphics/Double Pendulum Simulation/dependencies/library/libglfw.3.4.dylib\"",
 				"role" : "libraries"
 			},
 			{

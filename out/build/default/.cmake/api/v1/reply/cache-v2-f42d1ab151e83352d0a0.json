@@ -67,7 +67,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/jeff547/Developer/Computer Graphics/Double Pendulum Simulation/out/build/default"
+			"value" : "/Users/jeff547/Developer/ComputerGraphics/Double Pendulum Simulation/out/build/default"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -167,10 +167,10 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "CXX compiler"
+					"value" : "No help, variable specified on the command line."
 				}
 			],
-			"type" : "STRING",
+			"type" : "UNINITIALIZED",
 			"value" : "/usr/bin/clang++"
 		},
 		{
@@ -263,10 +263,10 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "C compiler"
+					"value" : "No help, variable specified on the command line."
 				}
 			],
-			"type" : "STRING",
+			"type" : "UNINITIALIZED",
 			"value" : "/usr/bin/clang"
 		},
 		{
@@ -507,7 +507,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/jeff547/Developer/Computer Graphics/Double Pendulum Simulation/out/build/default/CMakeFiles/pkgRedirects"
+			"value" : "/Users/jeff547/Developer/ComputerGraphics/Double Pendulum Simulation/out/build/default/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -567,7 +567,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/jeff547/Developer/Computer Graphics/Double Pendulum Simulation"
+			"value" : "/Users/jeff547/Developer/ComputerGraphics/Double Pendulum Simulation"
 		},
 		{
 			"name" : "CMAKE_INSTALL_NAME_TOOL",
@@ -595,7 +595,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "/Users/jeff547/Developer/Computer Graphics/Double Pendulum Simulation/out/install/default"
+			"value" : "/Users/jeff547/Developer/ComputerGraphics/Double Pendulum Simulation/out/install/default"
 		},
 		{
 			"name" : "CMAKE_LINKER",
@@ -791,7 +791,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : ""
+			"value" : "15.6"
 		},
 		{
 			"name" : "CMAKE_OSX_SYSROOT",
@@ -803,7 +803,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk"
+			"value" : "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk"
 		},
 		{
 			"name" : "CMAKE_PLATFORM_INFO_INITIALIZED",
@@ -1219,7 +1219,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/jeff547/Developer/Computer Graphics/Double Pendulum Simulation/out/build/default"
+			"value" : "/Users/jeff547/Developer/ComputerGraphics/Double Pendulum Simulation/out/build/default"
 		},
 		{
 			"name" : "Double_Pendulum_Simulation_IS_TOP_LEVEL",
@@ -1243,7 +1243,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/jeff547/Developer/Computer Graphics/Double Pendulum Simulation"
+			"value" : "/Users/jeff547/Developer/ComputerGraphics/Double Pendulum Simulation"
 		},
 		{
 			"name" : "boost_headers_DIR",
